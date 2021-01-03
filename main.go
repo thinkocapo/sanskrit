@@ -50,6 +50,7 @@ type List struct {
 
 func (list *List) add(newNode *Node) {
 	newNode.Prev = list.Tail
+	newNode.Next = nil
 	list.Tail = newNode
 }
 
@@ -62,32 +63,33 @@ func (list *List) add(newNode *Node) {
 // }
 
 func main() {
-	fmt.Println("HELLO WORLD")
+	fmt.Println("HELLO LIST")
 
-	// WORKED
-	// node1 := Node{Letter: Character{s}}
-	// node0 := Node{Letter: Character{a}, After: &node1}
-	// fmt.Println(node0.Letter)
-	// fmt.Println(node0.After.Letter)
+	initialNode := Node{Letter: Character{a}}
 
-	initialNode := Node{Letter: Character{a}, Next: nil}
+	list := List{Head: &initialNode, Tail: &initialNode}
 
-	list := List{Head: &initialNode, Tail: nil}
 	fmt.Println(list.Head)
 	fmt.Println(list.Tail)
 
-	nextNode := Node{Letter: Character{s}, Next: nil}
+	nextNode := Node{Letter: Character{s}}
 	list.add(&nextNode)
 
 	fmt.Println(list.Head)
 	fmt.Println(list.Tail)
 
-	nextNode2 := Node{Letter: Character{i}, Next: nil}
+	nextNode2 := Node{Letter: Character{i}}
 	list.add(&nextNode2)
 
 	fmt.Println(list.Head)
-	// fmt.Println(list.Tail.Prev) worked
+	fmt.Println(list.Tail) // worked
 }
+
+// WORKED
+// node1 := Node{Letter: Character{s}}
+// node0 := Node{Letter: Character{a}, After: &node1}
+// fmt.Println(node0.Letter)
+// fmt.Println(node0.After.Letter)
 
 // https://travix.io/type-embedding-in-go-ba40dd4264df
 // fb := Football{Ball{Radius: 5, Material: "leather"}}
