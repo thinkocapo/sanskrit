@@ -1,46 +1,32 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
-// eval(type letter)
-// constant Letter a,i,u,r
-// type Letter struct {
-// 	vowel     string
-// 	consonant string
-// }
-// ^ or let Letter accept a vowel or consonant...
-// type Consonant struct {
-// 	before Letter
-// 	letter Letter
-// 	after  Letter
-// }
+type Consonant string
 
+// Vowels
 const (
 	a string = "a"
 	i string = "i"
 	u string = "u"
 	r string = "r"
-
-	s string = "s"
 )
 
-// TODO where to put beforeLetter afterLetter vowelBefore vowelAfter consonantBefore consonantAfter
-// type Consonant struct {
-// 	Node
-// }
-// type Vowel struct {
-// 	Node
-// }
+// Consonants
+const (
+	s string = "s"
+	t string = "t"
+)
 
 type Node struct {
 	Prev   *Node
-	Letter Character
+	Letter string
 	Next   *Node
-	vowel  bool
-}
-
-type Character struct {
-	string
+	Vowel  bool
 }
 
 type List struct {
@@ -65,29 +51,45 @@ func (l *List) print() {
 	fmt.Println(output)
 }
 
+func random(letters []string) string {
+	rand.Seed(time.Now().UnixNano())
+	min := 0
+	max := len(letters)
+	r := rand.Intn(max-min) + min
+	return letters[r]
+}
+
 func main() {
 	fmt.Println("HELLO LIST")
 
-	initialNode := Node{Letter: Character{a}}
+	var consonants = []string{s, t}
+	var vowels = []string{a, i, u, r}
 
-	list := List{Head: &initialNode, Tail: &initialNode}
+	initialNode := Node{Letter: random(vowels)}
 
-	nextNode := Node{Letter: Character{s}}
+	list := List{
+		Head: &initialNode,
+		Tail: &initialNode,
+	}
+
+	nextNode := Node{Letter: random(consonants)}
 	list.add(&nextNode)
 
-	nextNode2 := Node{Letter: Character{i}}
+	nextNode2 := Node{Letter: random(vowels)}
 	list.add(&nextNode2)
 
 	list.print()
 }
 
-// WORKED
-// node1 := Node{Letter: Character{s}}
-// node0 := Node{Letter: Character{a}, After: &node1}
-// fmt.Println(node0.Letter)
-// fmt.Println(node0.After.Letter)
+// EVAL
+// type Node struct {
+//	letter string
+//	vowel bool
+// }
 
-// https://travix.io/type-embedding-in-go-ba40dd4264df
-// fb := Football{Ball{Radius: 5, Material: "leather"}}
+// type Letter struct {
+//  value     string
+// 	vowel     bool
+// }
 
-// WORKED node1 := Vowel{Node{Letter: Character{a}}}
+// EVAL const x, y = Letter{"x", false}
