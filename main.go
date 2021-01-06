@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-type Consonant string
+// type Consonant string
 
 // Vowels
 const (
