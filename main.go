@@ -10,10 +10,24 @@ type Consonant string
 
 // Vowels
 const (
+	// short vowels
 	a string = "a"
 	i string = "i"
 	u string = "u"
 	r string = "r"
+
+	// long vowels
+	_a string = "_a"
+	_i string = "_i"
+	_u string = "_u"
+	_r string = "_r"
+
+	// medium -> strong
+	e  string = "e" // ai
+	ai string = "ai"
+	// medium -> strong
+	o  string = "o" // au
+	au string = "au"
 )
 
 // Consonants
