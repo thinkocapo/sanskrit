@@ -56,12 +56,14 @@ func (list *List) add(newNode *Node) {
 }
 
 func (l *List) print() {
-
+	output := ""
 	curr := l.Head
 	for curr != nil {
-		fmt.Println(curr.Letter)
+		// fmt.Println(curr.Letter)
+		output = fmt.Sprint(output, curr.Letter)
 		curr = curr.Next
 	}
+	fmt.Println(output)
 }
 
 // TODO
