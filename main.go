@@ -59,20 +59,11 @@ func (l *List) print() {
 	output := ""
 	curr := l.Head
 	for curr != nil {
-		// fmt.Println(curr.Letter)
 		output = fmt.Sprint(output, curr.Letter)
 		curr = curr.Next
 	}
 	fmt.Println(output)
 }
-
-// TODO
-// func (list *List) print() {
-// 	while list.Head != nil { // or list.head.next
-// 		fmt.Println(list.Head.Letter)
-// 		list.shift()
-// 	}
-// }
 
 func main() {
 	fmt.Println("HELLO LIST")
@@ -81,20 +72,11 @@ func main() {
 
 	list := List{Head: &initialNode, Tail: &initialNode}
 
-	// fmt.Println(list.Head)
-	// fmt.Println(list.Tail)
-
 	nextNode := Node{Letter: Character{s}}
 	list.add(&nextNode)
 
-	// fmt.Println(list.Head)
-	// fmt.Println(list.Tail)
-
 	nextNode2 := Node{Letter: Character{i}}
 	list.add(&nextNode2)
-
-	// fmt.Println(list.Head)
-	// fmt.Println(list.Tail) // worked
 
 	list.print()
 }
