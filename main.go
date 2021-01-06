@@ -49,9 +49,19 @@ type List struct {
 }
 
 func (list *List) add(newNode *Node) {
+	list.Tail.Next = newNode
 	newNode.Prev = list.Tail
 	newNode.Next = nil
 	list.Tail = newNode
+}
+
+func (l *List) print() {
+
+	curr := l.Head
+	for curr != nil {
+		fmt.Println(curr.Letter)
+		curr = curr.Next
+	}
 }
 
 // TODO
@@ -69,20 +79,22 @@ func main() {
 
 	list := List{Head: &initialNode, Tail: &initialNode}
 
-	fmt.Println(list.Head)
-	fmt.Println(list.Tail)
+	// fmt.Println(list.Head)
+	// fmt.Println(list.Tail)
 
 	nextNode := Node{Letter: Character{s}}
 	list.add(&nextNode)
 
-	fmt.Println(list.Head)
-	fmt.Println(list.Tail)
+	// fmt.Println(list.Head)
+	// fmt.Println(list.Tail)
 
 	nextNode2 := Node{Letter: Character{i}}
 	list.add(&nextNode2)
 
-	fmt.Println(list.Head)
-	fmt.Println(list.Tail) // worked
+	// fmt.Println(list.Head)
+	// fmt.Println(list.Tail) // worked
+
+	list.print()
 }
 
 // WORKED
