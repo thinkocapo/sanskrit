@@ -6,10 +6,11 @@ import (
 	"time"
 )
 
-// type Consonant string
+// Guttural, Platal, Cerebral, Dental, Labia
 
 // Vowels
 const (
+	// WEAK - short and long
 	// short vowels
 	a string = "a"
 	i string = "i"
@@ -22,18 +23,52 @@ const (
 	_u string = "_u"
 	_r string = "_r"
 
-	// medium -> strong
-	e  string = "e" // ai
-	ai string = "ai"
-	// medium -> strong
-	o  string = "o" // au
-	au string = "au"
+	// MEDIUM  By adding an "a" sound to the front of the weak vowels, we get medium vowels.
+	e string = "e" // ai, pronoounced a+i together, 'ay' because vocal formation midway between the two.
+	o string = "o" // oh, pronunciating a+u together where they meet in the mouth
+
+	// STRONG By strengthening the "a" sound in a medium vowel, we get strong vowels.
+	ai string = "ai" // ah-ee, pronounced as a followed by i
+	au string = "au" // ah-uu , pronounced as a followed by u
 )
 
 // Consonants
 const (
-	s string = "s"
-	t string = "t"
+	// Aspirated followed by Unaspirated
+	// Guttural
+	k  string = "k"
+	kh string = "kh"
+	g  string = "g"
+	gh string = "gh"
+	ng string = "ng" // n guttural
+
+	// Palatal
+	c  string = "c"
+	ch string = "ch"
+	j  string = "j"
+	jh string = "jh"
+	np string = "np" // n palatal
+
+	// Cerebral
+	t_  string = "t_"
+	th_ string = "th_"
+	d_  string = "d_"
+	dh_ string = "dh_"
+	nc_ string = "nc_" // n cerebral
+
+	// Dental
+	t  string = "t"
+	th string = "th"
+	d  string = "d"
+	dh string = "dh"
+	nd string = "n" // n dental
+
+	// Labial
+	p  string = "p"
+	ph string = "ph"
+	b  string = "b"
+	bh string = "bh"
+	m  string = "m" // labial only
 )
 
 type Node struct {
@@ -76,7 +111,13 @@ func random(letters []string) string {
 func main() {
 	fmt.Println("HELLO LIST")
 
-	var consonants = []string{s, t}
+	var consonants = []string{
+		k, kh, g, gh, ng,
+		c, ch, j, jh, np,
+		t_, th_, d_, dh_, nc_, 
+		t, th, d, dh, nd,
+		p, ph, b, bh, m
+	}
 	var vowels = []string{a, i, u, r}
 
 	initialNode := Node{Letter: random(vowels)}
