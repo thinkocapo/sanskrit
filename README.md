@@ -28,6 +28,12 @@ https://www.karineisen.com/blog/chanting-the-sanskrit-alphabet
 
 https://delightyoga.com/blog/yoga/the-sanskrit-alphabet-a-pronunciation-guide
 
+
+
+and
+
+https://www.bolochant.com/blog/sanskrit-pronunciation
+
 #### List of letters
 https://en.wikipedia.org/wiki/Devanagari
 

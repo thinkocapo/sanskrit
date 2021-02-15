@@ -18,10 +18,10 @@ const (
 	r string = "r"
 
 	// long vowels
-	_a string = "_a"
-	_i string = "_i"
-	_u string = "_u"
-	_r string = "_r"
+	a_ string = "a_"
+	i_ string = "i_"
+	u_ string = "u_"
+	r_ string = "r_"
 
 	// MEDIUM  By adding an "a" sound to the front of the weak vowels, we get medium vowels.
 	e string = "e" // ai, pronoounced a+i together, 'ay' because vocal formation midway between the two.
@@ -34,7 +34,7 @@ const (
 
 // Consonants
 const (
-	// Aspirated followed by Unaspirated
+	// Unaspirated, Aspirated, Voiced, Voiced
 	// Guttural
 	k  string = "k"
 	kh string = "kh"
@@ -61,7 +61,7 @@ const (
 	th string = "th"
 	d  string = "d"
 	dh string = "dh"
-	nd string = "n" // n dental
+	nd string = "nd" // n dental
 
 	// Labial
 	p  string = "p"
@@ -111,17 +111,21 @@ func random(letters []string) string {
 func main() {
 	fmt.Println("HELLO LIST")
 
+	var vowels = []string{
+		a, i, u, r,
+		a_, i_, u_, r_,
+		e, o,
+		ai, au,
+	}
 	var consonants = []string{
 		k, kh, g, gh, ng,
 		c, ch, j, jh, np,
-		t_, th_, d_, dh_, nc_, 
+		t_, th_, d_, dh_, nc_,
 		t, th, d, dh, nd,
-		p, ph, b, bh, m
+		p, ph, b, bh, m,
 	}
-	var vowels = []string{a, i, u, r}
 
 	initialNode := Node{Letter: random(vowels)}
-
 	list := List{
 		Head: &initialNode,
 		Tail: &initialNode,
@@ -129,9 +133,10 @@ func main() {
 
 	nextNode := Node{Letter: random(consonants)}
 	list.add(&nextNode)
-
 	nextNode2 := Node{Letter: random(vowels)}
 	list.add(&nextNode2)
+	nextNode3 := Node{Letter: random(consonants)}
+	list.add(&nextNode3)
 
 	list.print()
 }
